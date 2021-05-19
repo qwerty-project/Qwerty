@@ -1,0 +1,1 @@
+antlr4 Qwerty.g4 && javac Qwerty*.java && grun Qwerty program input.txt -gui
