@@ -1,2 +1,2 @@
 # Qwerty
-School project for the automata course
+School project for the automata course.
