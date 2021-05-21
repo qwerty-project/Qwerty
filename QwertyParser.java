@@ -16,8 +16,8 @@ public class QwertyParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		VARNAME=1, NUMBER=2, MULITPLY=3, DIVIDE=4, ADD=5, SUBTRACT=6, POWER=7, 
-		FACTORIAL=8, SIN=9, COS=10, TAN=11, LEFT_PARANTHESES=12, RIGHT_PARANTHESES=13, 
+		SIN=1, COS=2, TAN=3, VARNAME=4, NUMBER=5, MULITPLY=6, DIVIDE=7, ADD=8, 
+		SUBTRACT=9, POWER=10, FACTORIAL=11, LEFT_PARANTHESES=12, RIGHT_PARANTHESES=13, 
 		ESCAPE_CHARS=14, SPACES=15;
 	public static final int
 		RULE_program = 0, RULE_stmt = 1, RULE_expr = 2;
@@ -30,15 +30,15 @@ public class QwertyParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, null, null, "'*'", "'/'", "'+'", "'-'", "'^'", "'!'", "'Sin('", 
-			"'Cos('", "'Tan('", "'('", "')'"
+			null, "'Sin'", "'Cos'", "'Tan'", null, null, "'*'", "'/'", "'+'", "'-'", 
+			"'^'", "'!'", "'('", "')'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "VARNAME", "NUMBER", "MULITPLY", "DIVIDE", "ADD", "SUBTRACT", "POWER", 
-			"FACTORIAL", "SIN", "COS", "TAN", "LEFT_PARANTHESES", "RIGHT_PARANTHESES", 
+			null, "SIN", "COS", "TAN", "VARNAME", "NUMBER", "MULITPLY", "DIVIDE", 
+			"ADD", "SUBTRACT", "POWER", "FACTORIAL", "LEFT_PARANTHESES", "RIGHT_PARANTHESES", 
 			"ESCAPE_CHARS", "SPACES"
 		};
 	}
@@ -124,7 +124,7 @@ public class QwertyParser extends Parser {
 			setState(9);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << VARNAME) | (1L << NUMBER) | (1L << SIN) | (1L << COS) | (1L << TAN) | (1L << LEFT_PARANTHESES))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SIN) | (1L << COS) | (1L << TAN) | (1L << VARNAME) | (1L << NUMBER) | (1L << LEFT_PARANTHESES))) != 0)) {
 				{
 				{
 				setState(6);
@@ -233,6 +233,7 @@ public class QwertyParser extends Parser {
 	}
 	public static class CosExpressionContext extends ExprContext {
 		public TerminalNode COS() { return getToken(QwertyParser.COS, 0); }
+		public TerminalNode LEFT_PARANTHESES() { return getToken(QwertyParser.LEFT_PARANTHESES, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -281,6 +282,7 @@ public class QwertyParser extends Parser {
 	}
 	public static class TanExpressionContext extends ExprContext {
 		public TerminalNode TAN() { return getToken(QwertyParser.TAN, 0); }
+		public TerminalNode LEFT_PARANTHESES() { return getToken(QwertyParser.LEFT_PARANTHESES, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -297,6 +299,7 @@ public class QwertyParser extends Parser {
 	}
 	public static class SinExpressionContext extends ExprContext {
 		public TerminalNode SIN() { return getToken(QwertyParser.SIN, 0); }
+		public TerminalNode LEFT_PARANTHESES() { return getToken(QwertyParser.LEFT_PARANTHESES, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -392,7 +395,7 @@ public class QwertyParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(35);
+			setState(38);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case COS:
@@ -404,8 +407,10 @@ public class QwertyParser extends Parser {
 				setState(17);
 				match(COS);
 				setState(18);
-				expr(0);
+				match(LEFT_PARANTHESES);
 				setState(19);
+				expr(0);
+				setState(20);
 				match(RIGHT_PARANTHESES);
 				}
 				break;
@@ -414,11 +419,13 @@ public class QwertyParser extends Parser {
 				_localctx = new TanExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(21);
-				match(TAN);
 				setState(22);
-				expr(0);
+				match(TAN);
 				setState(23);
+				match(LEFT_PARANTHESES);
+				setState(24);
+				expr(0);
+				setState(25);
 				match(RIGHT_PARANTHESES);
 				}
 				break;
@@ -427,11 +434,13 @@ public class QwertyParser extends Parser {
 				_localctx = new SinExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(25);
-				match(SIN);
-				setState(26);
-				expr(0);
 				setState(27);
+				match(SIN);
+				setState(28);
+				match(LEFT_PARANTHESES);
+				setState(29);
+				expr(0);
+				setState(30);
 				match(RIGHT_PARANTHESES);
 				}
 				break;
@@ -440,11 +449,11 @@ public class QwertyParser extends Parser {
 				_localctx = new ParanthesesExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(29);
+				setState(32);
 				match(LEFT_PARANTHESES);
-				setState(30);
+				setState(33);
 				expr(0);
-				setState(31);
+				setState(34);
 				match(RIGHT_PARANTHESES);
 				}
 				break;
@@ -453,7 +462,7 @@ public class QwertyParser extends Parser {
 				_localctx = new NumberExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(33);
+				setState(36);
 				match(NUMBER);
 				}
 				break;
@@ -462,7 +471,7 @@ public class QwertyParser extends Parser {
 				_localctx = new VarnameExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(34);
+				setState(37);
 				match(VARNAME);
 				}
 				break;
@@ -470,7 +479,7 @@ public class QwertyParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(50);
+			setState(53);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -478,18 +487,18 @@ public class QwertyParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(48);
+					setState(51);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 					case 1:
 						{
 						_localctx = new PowerExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(37);
+						setState(40);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(38);
+						setState(41);
 						((PowerExpressionContext)_localctx).operator = match(POWER);
-						setState(39);
+						setState(42);
 						expr(7);
 						}
 						break;
@@ -497,9 +506,9 @@ public class QwertyParser extends Parser {
 						{
 						_localctx = new MultiplyDivideExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(40);
+						setState(43);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(41);
+						setState(44);
 						((MultiplyDivideExpressionContext)_localctx).operator = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==MULITPLY || _la==DIVIDE) ) {
@@ -510,7 +519,7 @@ public class QwertyParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(42);
+						setState(45);
 						expr(6);
 						}
 						break;
@@ -518,9 +527,9 @@ public class QwertyParser extends Parser {
 						{
 						_localctx = new AddSubtractExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(43);
+						setState(46);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(44);
+						setState(47);
 						((AddSubtractExpressionContext)_localctx).operator = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==ADD || _la==SUBTRACT) ) {
@@ -531,7 +540,7 @@ public class QwertyParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(45);
+						setState(48);
 						expr(5);
 						}
 						break;
@@ -539,16 +548,16 @@ public class QwertyParser extends Parser {
 						{
 						_localctx = new FactorialExpresionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(46);
+						setState(49);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(47);
+						setState(50);
 						((FactorialExpresionContext)_localctx).operator = match(FACTORIAL);
 						}
 						break;
 					}
 					} 
 				}
-				setState(52);
+				setState(55);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
@@ -587,22 +596,23 @@ public class QwertyParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\218\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\21;\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\3\2\7\2\n\n\2\f\2\16\2\r\13\2\3\3\3\3\5\3\21\n\3\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4"+
-		"&\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4\63\n\4\f\4\16\4"+
-		"\66\13\4\3\4\2\3\6\5\2\4\6\2\4\3\2\5\6\3\2\7\b\2?\2\13\3\2\2\2\4\20\3"+
-		"\2\2\2\6%\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\r\3\2\2\2\13\t\3\2\2\2\13"+
-		"\f\3\2\2\2\f\3\3\2\2\2\r\13\3\2\2\2\16\21\5\6\4\2\17\21\7\3\2\2\20\16"+
-		"\3\2\2\2\20\17\3\2\2\2\21\5\3\2\2\2\22\23\b\4\1\2\23\24\7\f\2\2\24\25"+
-		"\5\6\4\2\25\26\7\17\2\2\26&\3\2\2\2\27\30\7\r\2\2\30\31\5\6\4\2\31\32"+
-		"\7\17\2\2\32&\3\2\2\2\33\34\7\13\2\2\34\35\5\6\4\2\35\36\7\17\2\2\36&"+
-		"\3\2\2\2\37 \7\16\2\2 !\5\6\4\2!\"\7\17\2\2\"&\3\2\2\2#&\7\4\2\2$&\7\3"+
-		"\2\2%\22\3\2\2\2%\27\3\2\2\2%\33\3\2\2\2%\37\3\2\2\2%#\3\2\2\2%$\3\2\2"+
-		"\2&\64\3\2\2\2\'(\f\b\2\2()\7\t\2\2)\63\5\6\4\t*+\f\7\2\2+,\t\2\2\2,\63"+
-		"\5\6\4\b-.\f\6\2\2./\t\3\2\2/\63\5\6\4\7\60\61\f\t\2\2\61\63\7\n\2\2\62"+
-		"\'\3\2\2\2\62*\3\2\2\2\62-\3\2\2\2\62\60\3\2\2\2\63\66\3\2\2\2\64\62\3"+
-		"\2\2\2\64\65\3\2\2\2\65\7\3\2\2\2\66\64\3\2\2\2\7\13\20%\62\64";
+		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\5\4)\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4\66\n"+
+		"\4\f\4\16\49\13\4\3\4\2\3\6\5\2\4\6\2\4\3\2\b\t\3\2\n\13\2B\2\13\3\2\2"+
+		"\2\4\20\3\2\2\2\6(\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\r\3\2\2\2\13\t\3"+
+		"\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\13\3\2\2\2\16\21\5\6\4\2\17\21\7\6\2"+
+		"\2\20\16\3\2\2\2\20\17\3\2\2\2\21\5\3\2\2\2\22\23\b\4\1\2\23\24\7\4\2"+
+		"\2\24\25\7\16\2\2\25\26\5\6\4\2\26\27\7\17\2\2\27)\3\2\2\2\30\31\7\5\2"+
+		"\2\31\32\7\16\2\2\32\33\5\6\4\2\33\34\7\17\2\2\34)\3\2\2\2\35\36\7\3\2"+
+		"\2\36\37\7\16\2\2\37 \5\6\4\2 !\7\17\2\2!)\3\2\2\2\"#\7\16\2\2#$\5\6\4"+
+		"\2$%\7\17\2\2%)\3\2\2\2&)\7\7\2\2\')\7\6\2\2(\22\3\2\2\2(\30\3\2\2\2("+
+		"\35\3\2\2\2(\"\3\2\2\2(&\3\2\2\2(\'\3\2\2\2)\67\3\2\2\2*+\f\b\2\2+,\7"+
+		"\f\2\2,\66\5\6\4\t-.\f\7\2\2./\t\2\2\2/\66\5\6\4\b\60\61\f\6\2\2\61\62"+
+		"\t\3\2\2\62\66\5\6\4\7\63\64\f\t\2\2\64\66\7\r\2\2\65*\3\2\2\2\65-\3\2"+
+		"\2\2\65\60\3\2\2\2\65\63\3\2\2\2\669\3\2\2\2\67\65\3\2\2\2\678\3\2\2\2"+
+		"8\7\3\2\2\29\67\3\2\2\2\7\13\20(\65\67";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

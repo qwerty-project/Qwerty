@@ -10,10 +10,9 @@ stmt : expr
 	 | VARNAME
 	 ;
 
-expr :
-	   COS expr RIGHT_PARANTHESES 					# cosExpression
-	 | TAN expr RIGHT_PARANTHESES 					# tanExpression
-	 | SIN expr RIGHT_PARANTHESES 					# sinExpression
+expr : COS LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# cosExpression
+	 | TAN LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# tanExpression
+	 | SIN LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# sinExpression
      | expr operator=FACTORIAL                  	# factorialExpresion
 	 | expr operator=POWER expr                 	# powerExpression
 	 | expr operator=(MULITPLY|DIVIDE) expr   		# multiplyDivideExpression
@@ -27,6 +26,10 @@ expr :
  * Lexicon Rules
  */
 
+SIN: 'Sin';
+COS: 'Cos';
+TAN: 'Tan';
+
 VARNAME: [a-zA-Z_]+[a-zA-Z_0-9]* ;
 NUMBER: ('-')?[0-9]+ ;
 
@@ -36,9 +39,6 @@ ADD: '+' ;
 SUBTRACT: '-' ;
 POWER: '^';
 FACTORIAL: '!';
-SIN: 'Sin(';
-COS: 'Cos(';
-TAN: 'Tan(';
 
 LEFT_PARANTHESES: '(' ;
 RIGHT_PARANTHESES: ')' ;
