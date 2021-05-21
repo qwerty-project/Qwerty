@@ -109,7 +109,6 @@ public class ExpressionListener extends QwertyBaseListener
     public void AddToStack(Double integer)
     {
         this.stack.push(integer);
-        System.out.println(integer);
     }
 
     public Double GetResult()
