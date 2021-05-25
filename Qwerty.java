@@ -9,7 +9,7 @@ public class Qwerty
 
         try
         {
-            input = CharStreams.fromFileName("input_3.txt");
+            input = CharStreams.fromFileName(args[0]);
         }
         catch(Exception ex)
         {

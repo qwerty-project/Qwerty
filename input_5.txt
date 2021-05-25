@@ -1,0 +1,15 @@
+AddIntegerAndChar (Int a, Char b) : Int
+{
+	Int i = a + b :
+	Return i :
+}
+
+Main() : Void
+{
+	NestedMain() : Int
+	{
+		Return 0 :
+	}
+
+	Return NestedMain(1 + 1, 2+ 2) :
+}
