@@ -27,6 +27,56 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitStmt(QwertyParser.StmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link QwertyParser#conditional}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditional(QwertyParser.ConditionalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#conditional}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditional(QwertyParser.ConditionalContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#if_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterIf_statement(QwertyParser.If_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#if_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitIf_statement(QwertyParser.If_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#elif_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterElif_statement(QwertyParser.Elif_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#elif_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitElif_statement(QwertyParser.Elif_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterElse_statement(QwertyParser.Else_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitElse_statement(QwertyParser.Else_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#conditional_block}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditional_block(QwertyParser.Conditional_blockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#conditional_block}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditional_block(QwertyParser.Conditional_blockContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link QwertyParser#variable_declaration}.
 	 * @param ctx the parse tree
 	 */
@@ -87,6 +137,36 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitFunction_call(QwertyParser.Function_callContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link QwertyParser#function_name}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_name(QwertyParser.Function_nameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#function_name}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_name(QwertyParser.Function_nameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#system_function}.
+	 * @param ctx the parse tree
+	 */
+	void enterSystem_function(QwertyParser.System_functionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#system_function}.
+	 * @param ctx the parse tree
+	 */
+	void exitSystem_function(QwertyParser.System_functionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#custom_function}.
+	 * @param ctx the parse tree
+	 */
+	void enterCustom_function(QwertyParser.Custom_functionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#custom_function}.
+	 * @param ctx the parse tree
+	 */
+	void exitCustom_function(QwertyParser.Custom_functionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link QwertyParser#return_stmt}.
 	 * @param ctx the parse tree
 	 */
@@ -127,6 +207,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitCustom_type(QwertyParser.Custom_typeContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code greaterthanExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterGreaterthanExpression(QwertyParser.GreaterthanExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code greaterthanExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitGreaterthanExpression(QwertyParser.GreaterthanExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code cosExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
 	 * @param ctx the parse tree
@@ -138,6 +230,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCosExpression(QwertyParser.CosExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code greaterthanorequalExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterGreaterthanorequalExpression(QwertyParser.GreaterthanorequalExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code greaterthanorequalExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitGreaterthanorequalExpression(QwertyParser.GreaterthanorequalExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code numberExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
@@ -163,6 +267,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitMultiplyDivideExpression(QwertyParser.MultiplyDivideExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code falseExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterFalseExpression(QwertyParser.FalseExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code falseExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitFalseExpression(QwertyParser.FalseExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code varnameExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
 	 * @param ctx the parse tree
@@ -187,6 +303,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitParanthesesExpression(QwertyParser.ParanthesesExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code orExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterOrExpression(QwertyParser.OrExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code orExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitOrExpression(QwertyParser.OrExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code powerExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
 	 * @param ctx the parse tree
@@ -198,6 +326,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPowerExpression(QwertyParser.PowerExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code lessthanExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterLessthanExpression(QwertyParser.LessthanExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code lessthanExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitLessthanExpression(QwertyParser.LessthanExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code decimalExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
@@ -211,6 +351,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitDecimalExpression(QwertyParser.DecimalExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code andExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndExpression(QwertyParser.AndExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code andExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndExpression(QwertyParser.AndExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code stringExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
 	 * @param ctx the parse tree
@@ -222,6 +374,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStringExpression(QwertyParser.StringExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code trueExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterTrueExpression(QwertyParser.TrueExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code trueExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitTrueExpression(QwertyParser.TrueExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code tanExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
@@ -270,6 +434,30 @@ public interface QwertyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFactorialExpresion(QwertyParser.FactorialExpresionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code equalEqualExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualEqualExpression(QwertyParser.EqualEqualExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code equalEqualExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualEqualExpression(QwertyParser.EqualEqualExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code lessthanorequalExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterLessthanorequalExpression(QwertyParser.LessthanorequalExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code lessthanorequalExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitLessthanorequalExpression(QwertyParser.LessthanorequalExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code functioncallExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.

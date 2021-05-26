@@ -39,6 +39,66 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterConditional(QwertyParser.ConditionalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConditional(QwertyParser.ConditionalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIf_statement(QwertyParser.If_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIf_statement(QwertyParser.If_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElif_statement(QwertyParser.Elif_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElif_statement(QwertyParser.Elif_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElse_statement(QwertyParser.Else_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElse_statement(QwertyParser.Else_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConditional_block(QwertyParser.Conditional_blockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConditional_block(QwertyParser.Conditional_blockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariable_declaration(QwertyParser.Variable_declarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -111,6 +171,42 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunction_name(QwertyParser.Function_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunction_name(QwertyParser.Function_nameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSystem_function(QwertyParser.System_functionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSystem_function(QwertyParser.System_functionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCustom_function(QwertyParser.Custom_functionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCustom_function(QwertyParser.Custom_functionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterReturn_stmt(QwertyParser.Return_stmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -159,6 +255,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterGreaterthanExpression(QwertyParser.GreaterthanExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGreaterthanExpression(QwertyParser.GreaterthanExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCosExpression(QwertyParser.CosExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -166,6 +274,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCosExpression(QwertyParser.CosExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGreaterthanorequalExpression(QwertyParser.GreaterthanorequalExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGreaterthanorequalExpression(QwertyParser.GreaterthanorequalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -195,6 +315,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFalseExpression(QwertyParser.FalseExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFalseExpression(QwertyParser.FalseExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVarnameExpression(QwertyParser.VarnameExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -219,6 +351,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOrExpression(QwertyParser.OrExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOrExpression(QwertyParser.OrExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPowerExpression(QwertyParser.PowerExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -226,6 +370,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPowerExpression(QwertyParser.PowerExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLessthanExpression(QwertyParser.LessthanExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLessthanExpression(QwertyParser.LessthanExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -243,6 +399,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAndExpression(QwertyParser.AndExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAndExpression(QwertyParser.AndExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterStringExpression(QwertyParser.StringExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -250,6 +418,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStringExpression(QwertyParser.StringExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTrueExpression(QwertyParser.TrueExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTrueExpression(QwertyParser.TrueExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -298,6 +478,30 @@ public class QwertyBaseListener implements QwertyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFactorialExpresion(QwertyParser.FactorialExpresionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEqualEqualExpression(QwertyParser.EqualEqualExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqualEqualExpression(QwertyParser.EqualEqualExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLessthanorequalExpression(QwertyParser.LessthanorequalExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLessthanorequalExpression(QwertyParser.LessthanorequalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
