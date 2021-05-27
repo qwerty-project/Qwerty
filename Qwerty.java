@@ -21,11 +21,15 @@ public class Qwerty
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         QwertyParser parser = new QwertyParser(tokens);
-
-        ExpressionListener listener = new ExpressionListener();
-        parser.addParseListener((ParseTreeListener) listener);
+	
+		SymbolTable symboltable = new SymbolTable();
+	
+		FunctionDeclarationListener functionDeclarationListener = new FunctionDeclarationListener();
+		
+		functionDeclarationListener.SetSymbolTable(symboltable);
+        parser.addParseListener((ParseTreeListener) functionDeclarationListener);
         parser.program();
-
-        System.out.println(listener.GetResult());
+		
+		symboltable.Print();
     }
 }
