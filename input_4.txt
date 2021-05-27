@@ -1,4 +1,8 @@
-Int i = 9.0 + "string":
-Int i = 9.0 + "string":
-Int i = 9.0 + "string":
-Int i = 9.0 + "string":
+String abc = "abc":
+String bcd = "bcd":
+String combined = abc + bcd:
+
+Print(abc) :
+Print(bcd) :
+Print(abc + bcd) :
+Print(combined) :

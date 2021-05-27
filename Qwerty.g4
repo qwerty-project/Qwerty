@@ -53,7 +53,7 @@ for_statement : FOR COLON expr COLON conditional_block ;
 
 variable_declaration : type VARNAME EQ expr COLON;
 
-/* i (a input, b input) : void
+/* i (a input, b input) : Void
 {
 	stmt
 }
@@ -61,15 +61,20 @@ variable_declaration : type VARNAME EQ expr COLON;
 
 function_declaration : VARNAME LEFT_PARANTHESES function_parameters RIGHT_PARANTHESES COLON type function_block ;
 
-function_parameters : type VARNAME COMMA function_parameters
-					| type VARNAME
-					| /* EMPTY */
-					;
+//function_parameters : type VARNAME COMMA function_parameters
+//					| type VARNAME
+//					| /* EMPTY */
+//					;
 
-function_arguments : expr COMMA function_arguments
-				   | expr
-				   | /* EMPTY */
-				   ;
+function_parameters : (type VARNAME (COMMA type VARNAME)* )? ;
+
+//function_arguments : expr COMMA function_arguments
+//				   | expr
+//				   | /* EMPTY */
+//				   ;
+
+
+function_arguments : (expr (COMMA expr)* )? ;
 
 function_block : LEFT_BRACKET (stmt | return_stmt)* RIGHT_BRACKET ;
 

@@ -77,6 +77,26 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitConditional_block(QwertyParser.Conditional_blockContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link QwertyParser#while_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhile_statement(QwertyParser.While_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#while_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhile_statement(QwertyParser.While_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#for_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFor_statement(QwertyParser.For_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#for_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFor_statement(QwertyParser.For_statementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link QwertyParser#variable_declaration}.
 	 * @param ctx the parse tree
 	 */

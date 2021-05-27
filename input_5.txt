@@ -4,6 +4,16 @@ AddIntegerAndChar (Int a, Char b) : Int
 	Return i :
 }
 
+ReturnInteger (Int a) : Int
+{
+	Return a :
+}
+
+param5 (Int a, Int b, Int c, Int d, Int e) : Int
+{
+	Return a + b + c + d + e :
+}
+
 Main() : Void
 {
 	NestedMain() : Int
@@ -11,5 +21,5 @@ Main() : Void
 		Return 0 :
 	}
 
-	Return NestedMain(1 + 1, 2+ 2) :
+	Return NestedMain(1 + 1, 2+ 2, 3, 4, 5, 55555+ 444+ 1222 +2 - 213) :
 }
