@@ -12,4 +12,4 @@ Print_2_NUMBERS(Int a, Int b) : Void
 	Return a + b : 
 }
 
-1 + 1
+Int out = 1 + 1 :

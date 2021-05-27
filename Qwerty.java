@@ -23,13 +23,18 @@ public class Qwerty
         QwertyParser parser = new QwertyParser(tokens);
 	
 		SymbolTable symboltable = new SymbolTable();
-	
+		
+		VariableDeclarationListener variableDeclarationListener = new VariableDeclarationListener();
 		FunctionDeclarationListener functionDeclarationListener = new FunctionDeclarationListener();
 		
+		variableDeclarationListener.SetSymbolTable(symboltable);
 		functionDeclarationListener.SetSymbolTable(symboltable);
+        parser.addParseListener((ParseTreeListener) variableDeclarationListener);
         parser.addParseListener((ParseTreeListener) functionDeclarationListener);
         parser.program();
 		
 		symboltable.Print();
+		
+		System.out.println("Value of variable \"out\": " + symboltable.GetValueOfVariable("out"));
     }
 }

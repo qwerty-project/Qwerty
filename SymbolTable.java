@@ -25,7 +25,7 @@ public class SymbolTable
     {
         for (SymbolTableEntry entry : entries)
         {
-            if (entry.Name == varname)
+            if (entry.Name.equals(varname))
             {
                 return entry;
             }
@@ -64,5 +64,21 @@ public class SymbolTable
 		{
 			entry.Print();
 		}
+	}
+	
+	public Double GetValueOfVariable(String varname)
+	{
+		ExpressionListener listener = new ExpressionListener();
+		listener.SetSymbolTable(this);
+		
+		SymbolTableEntry variable = GetVariable(varname);
+		if (variable == null)
+		{
+			return -1.0;
+		}
+		
+		variable.Value.enterRule(listener);
+		
+		return listener.GetResult();
 	}
 }
