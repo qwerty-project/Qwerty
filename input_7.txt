@@ -1,0 +1,15 @@
+Name() : aaa
+{
+}
+
+Print_2_NUMBERS(Int a, Int b) : Void
+{
+	Return a + b : 
+}
+
+Print_2_NUMBERS(Int a, Int b) : Void
+{
+	Return a + b : 
+}
+
+1 + 1

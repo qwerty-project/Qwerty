@@ -8,9 +8,9 @@ public class SymbolTable
     {
     }
 
-    public bool DoesVariableExist(String varname)
+    public boolean DoesVariableExist(String varname)
     {
-        foreach(SymbolTableEntry entry in entries)
+        for(SymbolTableEntry entry : entries)
         {
             if (entry.Name == varname)
             {
@@ -30,16 +30,18 @@ public class SymbolTable
                 return entry;
             }
         }
+		
+		return null;
     }
 
-    public void AddEntry(SymbolTableEntry newEntry) throws
+    public void AddEntry(SymbolTableEntry newEntry) throws VariableAlreadyExistsException
     {
         if (DoesVariableExist(newEntry.Name))
         {
-            throw new VariableAlreadyExistsException("Variable: " + newEntry.Name + " already exists!")
+            throw new VariableAlreadyExistsException("Variable: " + newEntry.Name + " already exists!");
         }
 
-        entries.Add(newEntry);
+        entries.add(newEntry);
     }
 
     public void DeleteVariable(String varname)
@@ -54,4 +56,13 @@ public class SymbolTable
             super(s);
         }
     }
+	
+	public void Print()
+	{
+		System.out.println("Symbol Table content:");
+		for (SymbolTableEntry entry : entries)
+		{
+			entry.Print();
+		}
+	}
 }
