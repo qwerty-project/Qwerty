@@ -32,15 +32,15 @@ conditional : if_statement (elif_statement)* (else_statement)?
 			| while_statement
 		    ;
 
-if_statement : IF COLON expr COLON conditional_block ;
+if_statement : IF COLON value_expression COLON conditional_block ;
 
-elif_statement : ELIF COLON expr COLON conditional_block ;
+elif_statement : ELIF COLON value_expression COLON conditional_block ;
 
 else_statement : ELSE conditional_block ;
 
 conditional_block : LEFT_BRACKET (stmt | return_stmt)* RIGHT_BRACKET ;
 
-while_statement : WHILE COLON expr COLON conditional_block ;
+while_statement : WHILE COLON value_expression COLON conditional_block ;
 
 /*
 For : i < 10 :
@@ -49,9 +49,9 @@ For : i < 10 :
 }
 */
 
-for_statement : FOR COLON expr COLON conditional_block ;
+for_statement : FOR COLON value_expression COLON conditional_block ;
 
-variable_declaration : type VARNAME EQ expr COLON;
+variable_declaration : type VARNAME EQ value_expression COLON;
 
 /* i (a input, b input) : Void
 {
@@ -74,7 +74,7 @@ function_parameters : (type VARNAME (COMMA type VARNAME)* )? ;
 //				   ;
 
 
-function_arguments : (expr (COMMA expr)* )? ;
+function_arguments : (value_expression (COMMA value_expression)* )? ;
 
 function_block : LEFT_BRACKET (stmt | return_stmt)* RIGHT_BRACKET ;
 
@@ -104,6 +104,8 @@ system_type : INT_TYPE
 			;
 
 custom_type : VARNAME ;
+
+value_expression: expr;
 
 expr : COS LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# cosExpression
 	 | TAN LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# tanExpression

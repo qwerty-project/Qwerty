@@ -227,6 +227,16 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitCustom_type(QwertyParser.Custom_typeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link QwertyParser#value_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue_expression(QwertyParser.Value_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#value_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue_expression(QwertyParser.Value_expressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code greaterthanExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
 	 * @param ctx the parse tree
