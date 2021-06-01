@@ -1,18 +1,26 @@
 import java.util.ArrayList;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.*;
 
 public class SymbolTable
 {
-    private ArrayList<SymbolTableEntry> entries = new ArrayList<SymbolTableEntry>();
+    private ArrayList<SymbolTableEntry> entries;
 
     public SymbolTable()
     {
+		entries = new ArrayList<SymbolTableEntry>();
     }
+	
+	public void AddSystemFunctions()
+	{
+		entries.add(new SymbolTableFunctionDeclarationEntry("Void", "Print"));
+	}
 
     public boolean DoesVariableExist(String varname)
     {
         for(SymbolTableEntry entry : entries)
         {
-            if (entry.Name == varname)
+            if (entry.Name.equals(varname) && entry.VarType == VariableType.Variable)
             {
                 return true;
             }
@@ -21,13 +29,39 @@ public class SymbolTable
         return false;
     }
 
-    public SymbolTableEntry GetVariable(String varname)
+    public boolean DoesFunctionExist(String functionname)
+    {
+        for(SymbolTableEntry entry : entries)
+        {
+            if (entry.Name.equals(functionname) && entry.VarType == VariableType.Function)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public SymbolTableVariableDeclarationEntry GetVariable(String varname)
     {
         for (SymbolTableEntry entry : entries)
         {
-            if (entry.Name.equals(varname))
+            if (entry.Name.equals(varname) && entry.VarType == VariableType.Variable)
             {
-                return entry;
+                return (SymbolTableVariableDeclarationEntry) entry;
+            }
+        }
+		
+		return null;
+    }
+
+    public SymbolTableFunctionDeclarationEntry GetFunction(String functionname)
+    {
+        for (SymbolTableEntry entry : entries)
+        {
+            if (entry.Name.equals(functionname) && entry.VarType == VariableType.Function)
+            {
+                return (SymbolTableFunctionDeclarationEntry) entry;
             }
         }
 		
@@ -36,7 +70,7 @@ public class SymbolTable
 
     public void AddEntry(SymbolTableEntry newEntry) throws VariableAlreadyExistsException
     {
-        if (DoesVariableExist(newEntry.Name))
+        if (DoesVariableExist(newEntry.Name) || DoesFunctionExist(newEntry.Name))
         {
             throw new VariableAlreadyExistsException("Variable: " + newEntry.Name + " already exists!");
         }
@@ -68,17 +102,34 @@ public class SymbolTable
 	
 	public Double GetValueOfVariable(String varname)
 	{
+		SymbolTableVariableDeclarationEntry variable = GetVariable(varname);
+		if (variable == null)
+		{
+			return 0.0;
+		}
+		
 		ExpressionListener listener = new ExpressionListener();
 		listener.SetSymbolTable(this);
 		
-		SymbolTableEntry variable = GetVariable(varname);
-		if (variable == null)
-		{
-			return -1.0;
-		}
-		
-		variable.Value.enterRule(listener);
+		QwertyLexer lexer = new QwertyLexer(CharStreams.fromString(variable.Value.getText()));
+
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        QwertyParser parser = new QwertyParser(tokens);
+        parser.addParseListener((ParseTreeListener) listener);
+        parser.program();
 		
 		return listener.GetResult();
+	}
+	
+	public Double RunFunction(String functionName, ArrayList<SymbolTableVariableDeclarationEntry> functionArguments)
+	{
+		SymbolTableFunctionDeclarationEntry function = GetFunction(functionName);
+		
+		if (function == null)
+		{
+			return 0.0;
+		}
+		
+		return function.RunFunction(functionArguments);
 	}
 }

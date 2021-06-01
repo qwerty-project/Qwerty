@@ -66,7 +66,9 @@ function_declaration : VARNAME LEFT_PARANTHESES function_parameters RIGHT_PARANT
 //					| /* EMPTY */
 //					;
 
-function_parameters : (type VARNAME (COMMA type VARNAME)* )? ;
+function_parameters : (function_parameter (COMMA function_parameter)* )? ;
+
+function_parameter : type VARNAME ;
 
 //function_arguments : expr COMMA function_arguments
 //				   | expr
@@ -74,7 +76,9 @@ function_parameters : (type VARNAME (COMMA type VARNAME)* )? ;
 //				   ;
 
 
-function_arguments : (value_expression (COMMA value_expression)* )? ;
+function_arguments : (function_argument (COMMA function_argument)* )? ;
+
+function_argument : value_expression ;
 
 function_block : LEFT_BRACKET (stmt | return_stmt)* RIGHT_BRACKET ;
 

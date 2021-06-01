@@ -159,6 +159,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunction_parameter(QwertyParser.Function_parameterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunction_parameter(QwertyParser.Function_parameterContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFunction_arguments(QwertyParser.Function_argumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -166,6 +178,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunction_arguments(QwertyParser.Function_argumentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunction_argument(QwertyParser.Function_argumentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunction_argument(QwertyParser.Function_argumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

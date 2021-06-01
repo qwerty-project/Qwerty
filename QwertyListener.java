@@ -127,6 +127,16 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitFunction_parameters(QwertyParser.Function_parametersContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link QwertyParser#function_parameter}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_parameter(QwertyParser.Function_parameterContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#function_parameter}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_parameter(QwertyParser.Function_parameterContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link QwertyParser#function_arguments}.
 	 * @param ctx the parse tree
 	 */
@@ -136,6 +146,16 @@ public interface QwertyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunction_arguments(QwertyParser.Function_argumentsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link QwertyParser#function_argument}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_argument(QwertyParser.Function_argumentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link QwertyParser#function_argument}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_argument(QwertyParser.Function_argumentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link QwertyParser#function_block}.
 	 * @param ctx the parse tree

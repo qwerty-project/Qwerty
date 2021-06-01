@@ -12,4 +12,8 @@ Print_2_NUMBERS(Int a, Int b) : Void
 	Return a + b : 
 }
 
-Int out = 1 + 1 :
+Int a = 10:
+Int b = 1222 : 
+Int c = a + b : 
+
+Print(a + 10 * a, a, a + b, a * b * c) :

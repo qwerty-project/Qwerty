@@ -17,7 +17,6 @@ public class ExpressionListener extends QwertyBaseListener
     @Override
     public void exitNumberExpression(QwertyParser.NumberExpressionContext ctx)
     {
-		System.out.println("Number has been encountered");
         Double number = Double.parseDouble(ctx.NUMBER().getText());
         AddToStack(number);
     }
@@ -26,12 +25,10 @@ public class ExpressionListener extends QwertyBaseListener
     public void exitVarnameExpression(QwertyParser.VarnameExpressionContext ctx)
     {
         String varname = ctx.VARNAME().getText();
-		ExpressionListener variablelistener = new ExpressionListener();
-		variablelistener.SetSymbolTable(symboltable);
 		
-		symboltable.GetVariable(varname).Value.enterRule(variablelistener);
+		Double variableValue = symboltable.GetValueOfVariable(varname);
 		
-        AddToStack(variablelistener.GetResult());
+        AddToStack(variableValue);
     }
 	
     @Override

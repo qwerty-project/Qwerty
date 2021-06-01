@@ -14,7 +14,7 @@ public class VariableDeclarationListener extends QwertyBaseListener
         String name = ctx.VARNAME().getText();
         QwertyParser.Value_expressionContext value = ctx.value_expression();
 
-        SymbolTableEntry entry = SymbolTableEntry.CreateVariable(type, name, value);
+        SymbolTableEntry entry = new SymbolTableVariableDeclarationEntry(type, name, value);
 
         try
         {
