@@ -1,0 +1,19 @@
+Int a = 1 :
+Int b = a * 20 :
+
+Print (b!, 0, 1, 2) :
+
+If : b > 10 :
+{
+	For : i < 100 :
+	{
+		Print(i) :
+	}
+}
+
+Main (Int a, Int b) : Void
+{
+		
+
+	Return -2 :
+}

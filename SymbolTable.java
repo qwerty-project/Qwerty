@@ -132,4 +132,26 @@ public class SymbolTable
 		
 		return function.RunFunction(functionArguments);
 	}
+	
+	public void AddStatementsToFunction(String functionname, ArrayList<Statement> statements)
+	{
+		SymbolTableFunctionDeclarationEntry function = GetFunction(functionname);
+		
+		function.AddStatements(statements);
+	}
+	
+	public Double GetValueOfExpression(QwertyParser.Value_expressionContext valueExpression)
+	{
+		ExpressionListener listener = new ExpressionListener();
+		listener.SetSymbolTable(this);
+		
+		QwertyLexer lexer = new QwertyLexer(CharStreams.fromString(valueExpression.getText()));
+
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        QwertyParser parser = new QwertyParser(tokens);
+        parser.addParseListener((ParseTreeListener) listener);
+        parser.program();
+		
+		return listener.GetResult();
+	}
 }

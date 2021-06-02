@@ -4,12 +4,22 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 {
 	
 	private ArrayList<SymbolTableVariableDeclarationEntry> Parameters;
+	private ArrayList<Statement> Statements;
+	
+	public SymbolTableFunctionDeclarationEntry(String type, String name, ArrayList<SymbolTableVariableDeclarationEntry> parameters, ArrayList<Statement> statements)
+	{
+		super(type, name, VariableType.Function);
+		
+		Parameters = parameters;
+		Statements = statements;
+	}
 	
 	public SymbolTableFunctionDeclarationEntry(String type, String name, ArrayList<SymbolTableVariableDeclarationEntry> parameters)
 	{
 		super(type, name, VariableType.Function);
 		
 		Parameters = parameters;
+		Statements = new ArrayList<Statement>();
 	}
 	
 	public SymbolTableFunctionDeclarationEntry(String type, String name)
@@ -17,6 +27,7 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 		super(type, name, VariableType.Function);
 		
 		Parameters = new ArrayList<SymbolTableVariableDeclarationEntry>();
+		Statements = new ArrayList<Statement>();
 	}
 	
 	@Override
@@ -35,6 +46,11 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 		}
 	}
 	
+	public void AddStatements(ArrayList<Statement> statements)
+	{
+		Statements = statements;
+	}
+	
 	public Double RunFunction(ArrayList<SymbolTableVariableDeclarationEntry> parameters)
 	{
 		Double outputValue = 0.0;
@@ -43,6 +59,20 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 			for (SymbolTableVariableDeclarationEntry parameter : parameters)
 			{
 				System.out.println("Expression Result: " + parameter.GetValue());
+			}
+			
+			return outputValue;
+		}
+		
+		for (Statement statement : Statements)
+		{
+			statement.Run();
+			
+			if (statement.type == StatementType.Return)
+			{
+				ReturnStatement returnStatement = (ReturnStatement)statement;
+				outputValue = returnStatement.GetValue();
+				return outputValue;
 			}
 		}
 		
