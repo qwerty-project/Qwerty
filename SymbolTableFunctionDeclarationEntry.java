@@ -63,6 +63,13 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 			
 			return outputValue;
 		}
+		else if (Name.equals("Mod"))
+		{
+			Double number = parameters.get(0).GetValue();
+			Double modulo = parameters.get(1).GetValue();
+			
+			return number % modulo;
+		}
 		
 		for (Statement statement : Statements)
 		{

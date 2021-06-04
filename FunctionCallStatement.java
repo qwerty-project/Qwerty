@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class FunctionCallStatement extends Statement
 {
     String function_name = null;
-    ArrayList<SymbolTableVariableDeclarationEntry> arguments = new ArrayList<>();
+    ArrayList<SymbolTableVariableDeclarationEntry> arguments = new ArrayList<SymbolTableVariableDeclarationEntry>();
 
 	FunctionCallStatement(SymbolTable symboltable_, QwertyParser.Function_callContext function_call_)
 	{
@@ -13,9 +13,9 @@ public class FunctionCallStatement extends Statement
 
         for (QwertyParser.Function_argumentContext argument : function_call_.function_arguments().function_argument())
         {
-            SymbolTableVariableDeclarationEntry arg = new SymbolTableVariableDeclarationEntry("Double", "temp", argument.value_expression());
-
-            arguments.add(arg);
+            SymbolTableVariableDeclarationEntry arg = new SymbolTableVariableDeclarationEntry("Int", "temp", argument.value_expression());
+            arg.SetSymbolTable(symbolTable);
+			arguments.add(arg);
         }
 	}
 
@@ -25,11 +25,8 @@ public class FunctionCallStatement extends Statement
         if (symbolTable.DoesFunctionExist(function_name))
         {
             SymbolTableFunctionDeclarationEntry function = symbolTable.GetFunction(function_name);
+			
             function.RunFunction(arguments);
-        }
-        else
-        {
-            System.out.println("Waarom");
         }
     }
 }

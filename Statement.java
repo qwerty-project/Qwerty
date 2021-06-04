@@ -52,4 +52,24 @@ public class Statement
 			statement.Run();
 		}
 	}
+	
+	public void Print()
+	{
+		Print(0);
+	}
+	
+	public void Print(int indent)
+	{
+		for (int i = 0; i < indent; i++)
+		{
+			System.out.print("\t");
+		}
+		
+		System.out.println("Type: " + type);
+		
+		for (Statement statement : Statements)
+		{
+			statement.Print(indent + 1);
+		}
+	}
 }

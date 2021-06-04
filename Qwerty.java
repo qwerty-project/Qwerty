@@ -42,8 +42,7 @@ public class Qwerty
         statementVisitor.visit(tree);
 
         Statement output = statementVisitor.GetOutput();
+		
         output.Run();
-
-		System.out.println("Value of variable \"out\": " + symboltable.GetValueOfVariable("out"));
     }
 }

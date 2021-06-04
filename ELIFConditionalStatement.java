@@ -12,13 +12,6 @@ public class ELIFConditionalStatement extends Statement
 	// Check if boolean expression is Truthy or Falsy
 	public boolean check()
 	{
-		System.out.println("elifcheck: " + (symbolTable.GetValueOfExpression(booleanExpression) > 0));
 		return symbolTable.GetValueOfExpression(booleanExpression) > 0;
-	}
-
-	@Override
-	public void Run()
-	{
-		System.out.println("testelif");
 	}
 }

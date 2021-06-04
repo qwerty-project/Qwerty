@@ -34,7 +34,7 @@ public class ConditionalStatement extends Statement
 		
 		for (ELIFConditionalStatement Elif : Elifs)
 		{
-			if (Elif != null && Elif.check())
+			if (Elif.check())
 			{
 				Elif.Run();
 				return;
@@ -45,5 +45,20 @@ public class ConditionalStatement extends Statement
 		{
 			Else.Run();
 		}
+	}
+	
+	@Override
+	public void Print(int indent)
+	{
+		if (If != null)
+		If.Print(indent + 1);
+		
+		for(Statement statement : Elifs)
+		{
+			statement.Print(indent + 1);
+		}
+		
+		if (Else != null)
+		Else.Print(indent + 1);
 	}
 }

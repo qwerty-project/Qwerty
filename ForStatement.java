@@ -13,6 +13,26 @@ public class ForStatement extends Statement
 	@Override
 	public void Run()
 	{
+		try
+		{
+			SymbolTableVariableDeclarationEntry variable = new SymbolTableVariableDeclarationEntry("Int", "i");
+			variable.SetValue(0.0);
+			symbolTable.AddEntry(variable);
+		}
+		catch(SymbolTable.VariableAlreadyExistsException ex)
+		{
+			symbolTable.GetVariable("i").SetValue(0.0);
+		}
 		
+		while (symbolTable.GetValueOfExpression(loopExpression) > 0)
+		{
+			for (Statement statement : Statements)
+			{
+				statement.Run();
+			}
+			
+			SymbolTableVariableDeclarationEntry variable = symbolTable.GetVariable("i");
+			variable.SetValue(variable.GetValue() + 1);
+		}
 	}
 }

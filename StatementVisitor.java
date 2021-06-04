@@ -51,10 +51,33 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 
         return 0.0;
     }
+	
+	@Override 
+	public Double visitFor_statement(QwertyParser.For_statementContext ctx)
+	{
+		ForStatement forStatement = new ForStatement(symboltable, ctx.value_expression());
+		
+		visit(ctx.conditional_block());
+
+        forStatement.AddStatements(currentStatements.get(currentStatements.size() - 1));
+
+        currentStatements.remove(currentStatements.size() - 1);
+		
+		currentStatements.get(currentStatements.size() - 1).add(forStatement);
+		
+		return 0.0;
+	}
+	
 
     @Override
     public Double visitConditional(QwertyParser.ConditionalContext ctx)
     {
+		if (ctx.for_statement() != null)
+		{
+			visit(ctx.for_statement());
+			return 0.0;
+		}
+		
         if (ctx.if_statement() != null)
         {
                 visit(ctx.if_statement());
@@ -118,9 +141,11 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
     {
         visit(ctx.conditional_block());
 
-        currentElifStatements.add(new ELIFConditionalStatement(symboltable, ctx.value_expression()));
+		ELIFConditionalStatement currentElifStatement = new ELIFConditionalStatement(symboltable, ctx.value_expression());
 
-        currentIfStatement.AddStatements(currentStatements.get(currentStatements.size() - 1));
+        currentElifStatement.AddStatements(currentStatements.get(currentStatements.size() - 1));
+
+        currentElifStatements.add(currentElifStatement);
 
         currentStatements.remove(currentStatements.size() - 1);
 
@@ -134,7 +159,7 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 
         currentElseStatement = new ELSEConditionalStatement(symboltable);
 
-        currentIfStatement.AddStatements(currentStatements.get(currentStatements.size() - 1));
+        currentElseStatement.AddStatements(currentStatements.get(currentStatements.size() - 1));
 
         currentStatements.remove(currentStatements.size() - 1);
 

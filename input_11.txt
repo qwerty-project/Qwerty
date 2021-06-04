@@ -1,0 +1,19 @@
+For : i < 100 :
+{
+	If : Mod(i, 15) == 0 :
+	{
+		Print(-1):
+	}
+	Elif : Mod(i, 3) == 0 :
+	{
+		Print(-2):
+	}
+	Elif : Mod(i, 5) == 0 :
+	{
+		Print(-3):
+	}
+	Else
+	{
+		Print(i):
+	}
+}

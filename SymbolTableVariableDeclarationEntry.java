@@ -4,7 +4,16 @@ import org.antlr.v4.runtime.tree.*;
 
 public class SymbolTableVariableDeclarationEntry extends SymbolTableEntry
 {
-    public QwertyParser.Value_expressionContext Value;
+	boolean UseDouble = false;
+	public Double ValueDouble;
+    public QwertyParser.Value_expressionContext Value = null;
+	
+	public SymbolTableVariableDeclarationEntry(String type, String name)
+	{
+		super(type, name, VariableType.Variable);
+        
+		ValueDouble = 0.0;
+	}
 	
 	public SymbolTableVariableDeclarationEntry(String type, String name, QwertyParser.Value_expressionContext value)
 	{
@@ -21,6 +30,11 @@ public class SymbolTableVariableDeclarationEntry extends SymbolTableEntry
 	
 	public Double GetValue()
 	{
+		if (UseDouble)
+		{
+			return ValueDouble;
+		}
+		
 		ExpressionListener listener = new ExpressionListener();
 		listener.SetSymbolTable(symboltable);
 		QwertyLexer lexer = new QwertyLexer(CharStreams.fromString(Value.getText()));
@@ -31,5 +45,11 @@ public class SymbolTableVariableDeclarationEntry extends SymbolTableEntry
         parser.program();
 		
 		return listener.GetResult();
+	}
+	
+	public void SetValue(Double value)
+	{
+		UseDouble = true;
+		ValueDouble = value;
 	}
 }

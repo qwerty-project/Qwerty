@@ -12,19 +12,6 @@ public class IFConditionalStatement extends Statement
 	// Check if boolean expression is Truthy or Falsy
 	public boolean check()
 	{
-		System.out.println("ifcheck: " + (symbolTable.GetValueOfExpression(booleanExpression) > 0));
 		return symbolTable.GetValueOfExpression(booleanExpression) > 0;
-	}
-
-	@Override
-	public void Run()
-	{
-		System.out.println("testif");
-
-		for (Statement statement : Statements)
-		{
-			System.out.println("Heeee");
-			statement.Run();
-		}
 	}
 }

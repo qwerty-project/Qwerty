@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.util.ArrayList;
 import java.lang.Math;
 
 public class ExpressionListener extends QwertyBaseListener
@@ -14,6 +15,22 @@ public class ExpressionListener extends QwertyBaseListener
 
     int indent;
 
+	@Override
+	public void exitFunctioncallExpression(QwertyParser.FunctioncallExpressionContext ctx)
+	{
+		String functionname = ctx.function_call().function_name().getText();
+		ArrayList<SymbolTableVariableDeclarationEntry> arguments = new ArrayList<SymbolTableVariableDeclarationEntry>();
+		
+		for (QwertyParser.Function_argumentContext argument : ctx.function_call().function_arguments().function_argument())
+		{
+			SymbolTableVariableDeclarationEntry arg = new SymbolTableVariableDeclarationEntry("Int", "temp", argument.value_expression());
+            arg.SetSymbolTable(symboltable);
+			arguments.add(arg);
+		}
+		Double number = symboltable.GetFunction(functionname).RunFunction(arguments);
+		AddToStack(number);
+	}
+
     @Override
     public void exitNumberExpression(QwertyParser.NumberExpressionContext ctx)
     {
@@ -25,10 +42,10 @@ public class ExpressionListener extends QwertyBaseListener
     public void exitVarnameExpression(QwertyParser.VarnameExpressionContext ctx)
     {
         String varname = ctx.VARNAME().getText();
-
-		Double variableValue = symboltable.GetValueOfVariable(varname);
-
-        AddToStack(variableValue);
+		
+		Double variableValue = symboltable.GetVariable(varname).GetValue();
+		
+		AddToStack(variableValue);
     }
 
     @Override
@@ -237,7 +254,9 @@ public class ExpressionListener extends QwertyBaseListener
 
     public Double GetResult()
     {
-        return this.stack.pop();
+		Double result = 0.0;
+		result = this.stack.pop();
+        return result;
     }
 
     public String createIndent()

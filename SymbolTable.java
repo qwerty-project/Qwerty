@@ -14,6 +14,7 @@ public class SymbolTable
 	public void AddSystemFunctions()
 	{
 		entries.add(new SymbolTableFunctionDeclarationEntry("Void", "Print"));
+		entries.add(new SymbolTableFunctionDeclarationEntry("Int", "Mod"));
 	}
 
     public boolean DoesVariableExist(String varname)
@@ -33,7 +34,6 @@ public class SymbolTable
     {
         for(SymbolTableEntry entry : entries)
         {
-            System.out.println(entry.Name + " type: " + entry.VarType + " functioname: " + functionname + " check: " + (entry.Name.equals(functionname) && entry.VarType.equals(VariableType.Function)));
             if (entry.Name.equals(functionname) && entry.VarType.equals(VariableType.Function))
             {
                 return true;
@@ -75,7 +75,8 @@ public class SymbolTable
         {
             throw new VariableAlreadyExistsException("Variable: " + newEntry.Name + " already exists!");
         }
-
+		
+		newEntry.SetSymbolTable(this);
         entries.add(newEntry);
     }
 
@@ -106,20 +107,10 @@ public class SymbolTable
 		SymbolTableVariableDeclarationEntry variable = GetVariable(varname);
 		if (variable == null)
 		{
-			return 0.0;
+			return -123456789.0;
 		}
-
-		ExpressionListener listener = new ExpressionListener();
-		listener.SetSymbolTable(this);
-
-		QwertyLexer lexer = new QwertyLexer(CharStreams.fromString(variable.Value.getText()));
-
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        QwertyParser parser = new QwertyParser(tokens);
-        parser.addParseListener((ParseTreeListener) listener);
-        parser.program();
-
-		return listener.GetResult();
+		return variable.GetValue();
+		
 	}
 
 	public Double RunFunction(String functionName, ArrayList<SymbolTableVariableDeclarationEntry> functionArguments)
