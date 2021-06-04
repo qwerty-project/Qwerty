@@ -6,12 +6,12 @@ public class ExpressionListener extends QwertyBaseListener
     private final Stack<Double> stack = new Stack<>();
 
 	private SymbolTable symboltable;
-	
+
 	public void SetSymbolTable(SymbolTable symboltable_)
 	{
 		symboltable = symboltable_;
 	}
-	
+
     int indent;
 
     @Override
@@ -25,12 +25,12 @@ public class ExpressionListener extends QwertyBaseListener
     public void exitVarnameExpression(QwertyParser.VarnameExpressionContext ctx)
     {
         String varname = ctx.VARNAME().getText();
-		
+
 		Double variableValue = symboltable.GetValueOfVariable(varname);
-		
+
         AddToStack(variableValue);
     }
-	
+
     @Override
     public void exitAddSubtractExpression(QwertyParser.AddSubtractExpressionContext ctx)
     {
@@ -102,6 +102,113 @@ public class ExpressionListener extends QwertyBaseListener
         Double number = this.stack.pop();
 
         AddToStack(Math.tan(number));
+    }
+
+    @Override
+    public void exitEqualEqualExpression(QwertyParser.EqualEqualExpressionContext ctx)
+    {
+        Double right = this.stack.pop();
+        Double left = this.stack.pop();
+
+        if (left.equals(right))
+        {
+            AddToStack(1.0);
+        }
+        else
+        {
+            AddToStack(0.0);
+        }
+    }
+
+    @Override
+    public void exitNotExpression(QwertyParser.NotExpressionContext ctx)
+    {
+        Double number = this.stack.pop();
+
+        if (number > 0)
+        {
+            AddToStack(0.0);
+        }
+        else
+        {
+            AddToStack(1.0);
+        }
+    }
+
+    @Override
+    public void exitLessthanExpression(QwertyParser.LessthanExpressionContext ctx)
+    {
+        Double right = this.stack.pop();
+        Double left = this.stack.pop();
+
+        if (left < right)
+        {
+            AddToStack(1.0);
+        }
+        else
+        {
+            AddToStack(0.0);
+        }
+    }
+
+    @Override
+    public void exitLessthanorequalExpression(QwertyParser.LessthanorequalExpressionContext ctx)
+    {
+        Double right = this.stack.pop();
+        Double left = this.stack.pop();
+
+        if (left <= right)
+        {
+            AddToStack(1.0);
+        }
+        else
+        {
+            AddToStack(0.0);
+        }
+    }
+
+    @Override
+    public void exitGreaterthanExpression(QwertyParser.GreaterthanExpressionContext ctx)
+    {
+        Double right = this.stack.pop();
+        Double left = this.stack.pop();
+
+        if (left > right)
+        {
+            AddToStack(1.0);
+        }
+        else
+        {
+            AddToStack(0.0);
+        }
+    }
+
+    @Override
+    public void exitGreaterthanorequalExpression(QwertyParser.GreaterthanorequalExpressionContext ctx)
+    {
+        Double right = this.stack.pop();
+        Double left = this.stack.pop();
+
+        if (left >= right)
+        {
+            AddToStack(1.0);
+        }
+        else
+        {
+            AddToStack(0.0);
+        }
+    }
+
+    @Override
+    public void exitTrueExpression(QwertyParser.TrueExpressionContext ctx)
+    {
+        AddToStack(1.0);
+    }
+
+    @Override
+    public void exitFalseExpression(QwertyParser.FalseExpressionContext ctx)
+    {
+        AddToStack(0.0);
     }
 
     public Double Factorial(Double number)

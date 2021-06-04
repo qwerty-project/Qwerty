@@ -9,4 +9,5 @@ public enum StatementType
 	For,
 	While,
 	Declaration, // unused
+	FunctionCall,
 }

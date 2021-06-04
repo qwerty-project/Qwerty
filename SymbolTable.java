@@ -10,7 +10,7 @@ public class SymbolTable
     {
 		entries = new ArrayList<SymbolTableEntry>();
     }
-	
+
 	public void AddSystemFunctions()
 	{
 		entries.add(new SymbolTableFunctionDeclarationEntry("Void", "Print"));
@@ -33,7 +33,8 @@ public class SymbolTable
     {
         for(SymbolTableEntry entry : entries)
         {
-            if (entry.Name.equals(functionname) && entry.VarType == VariableType.Function)
+            System.out.println(entry.Name + " type: " + entry.VarType + " functioname: " + functionname + " check: " + (entry.Name.equals(functionname) && entry.VarType.equals(VariableType.Function)));
+            if (entry.Name.equals(functionname) && entry.VarType.equals(VariableType.Function))
             {
                 return true;
             }
@@ -51,7 +52,7 @@ public class SymbolTable
                 return (SymbolTableVariableDeclarationEntry) entry;
             }
         }
-		
+
 		return null;
     }
 
@@ -64,7 +65,7 @@ public class SymbolTable
                 return (SymbolTableFunctionDeclarationEntry) entry;
             }
         }
-		
+
 		return null;
     }
 
@@ -90,7 +91,7 @@ public class SymbolTable
             super(s);
         }
     }
-	
+
 	public void Print()
 	{
 		System.out.println("Symbol Table content:");
@@ -99,7 +100,7 @@ public class SymbolTable
 			entry.Print();
 		}
 	}
-	
+
 	public Double GetValueOfVariable(String varname)
 	{
 		SymbolTableVariableDeclarationEntry variable = GetVariable(varname);
@@ -107,51 +108,51 @@ public class SymbolTable
 		{
 			return 0.0;
 		}
-		
+
 		ExpressionListener listener = new ExpressionListener();
 		listener.SetSymbolTable(this);
-		
+
 		QwertyLexer lexer = new QwertyLexer(CharStreams.fromString(variable.Value.getText()));
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         QwertyParser parser = new QwertyParser(tokens);
         parser.addParseListener((ParseTreeListener) listener);
         parser.program();
-		
+
 		return listener.GetResult();
 	}
-	
+
 	public Double RunFunction(String functionName, ArrayList<SymbolTableVariableDeclarationEntry> functionArguments)
 	{
 		SymbolTableFunctionDeclarationEntry function = GetFunction(functionName);
-		
+
 		if (function == null)
 		{
 			return 0.0;
 		}
-		
+
 		return function.RunFunction(functionArguments);
 	}
-	
+
 	public void AddStatementsToFunction(String functionname, ArrayList<Statement> statements)
 	{
 		SymbolTableFunctionDeclarationEntry function = GetFunction(functionname);
-		
+
 		function.AddStatements(statements);
 	}
-	
+
 	public Double GetValueOfExpression(QwertyParser.Value_expressionContext valueExpression)
 	{
 		ExpressionListener listener = new ExpressionListener();
 		listener.SetSymbolTable(this);
-		
+
 		QwertyLexer lexer = new QwertyLexer(CharStreams.fromString(valueExpression.getText()));
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         QwertyParser parser = new QwertyParser(tokens);
         parser.addParseListener((ParseTreeListener) listener);
         parser.program();
-		
+
 		return listener.GetResult();
 	}
 }

@@ -18,7 +18,7 @@ If : expr :
 {
 
 }
-Elif
+Elif : expr :
 {
 }
 Else
@@ -114,7 +114,8 @@ value_expression: expr;
 expr : COS LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# cosExpression
 	 | TAN LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# tanExpression
 	 | SIN LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# sinExpression
-     | expr operator=FACTORIAL                  	# factorialExpresion
+	 | expr operator=FACTORIAL                  	# factorialExpresion
+     | operator=FACTORIAL expr                   	# notExpression
 	 | expr operator=POWER expr                 	# powerExpression
 	 | expr operator=(MULITPLY|DIVIDE) expr   		# multiplyDivideExpression
 	 | expr operator=(ADD|SUBTRACT) expr 			# addSubtractExpression
@@ -192,12 +193,12 @@ COLON: ':';
 COMMA: ',';
 
 // Values
+TRUE: 'True';
+FALSE: 'False';
 VARNAME: [a-zA-Z_]+[a-zA-Z_0-9]* ;
 NUMBER: ('-')?[0-9]+ ;
 DECIMAL: ('-')?[0-9]+[.][0-9]+ ;
 STRING: ["][a-zA-Z0-9_ ]*["] ;
-TRUE: 'True';
-FALSE: 'False';
 
 ESCAPE_CHARS: [\n\r\t\b\f]+ -> skip ;
 SPACES: [ ]+ -> skip ;

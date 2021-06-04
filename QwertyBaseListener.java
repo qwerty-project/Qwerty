@@ -375,6 +375,18 @@ public class QwertyBaseListener implements QwertyListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNotExpression(QwertyParser.NotExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNotExpression(QwertyParser.NotExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFalseExpression(QwertyParser.FalseExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}

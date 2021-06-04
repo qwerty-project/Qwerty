@@ -1,0 +1,35 @@
+Print(1) :
+If : True : 
+{
+	Print(2) :
+} 
+
+If : True :
+{
+	If : True :
+	{
+
+	} 
+} 
+Print(10) : 
+Print(10) : 
+If : True :
+{
+	Int out = 20 :
+} 
+
+If : True :
+{
+	If : 1 < 0 :
+	{
+		Print(3) :
+	}
+	Elif : -2 > -5 :
+	{
+		Print(4) :
+	}
+	Else
+	{
+		Print(5) :
+	}
+}

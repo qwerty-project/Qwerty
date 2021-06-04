@@ -317,6 +317,18 @@ public interface QwertyListener extends ParseTreeListener {
 	 */
 	void exitMultiplyDivideExpression(QwertyParser.MultiplyDivideExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code notExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNotExpression(QwertyParser.NotExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code notExpression}
+	 * labeled alternative in {@link QwertyParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNotExpression(QwertyParser.NotExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code falseExpression}
 	 * labeled alternative in {@link QwertyParser#expr}.
 	 * @param ctx the parse tree
