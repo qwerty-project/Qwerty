@@ -51,6 +51,27 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 		Statements = statements;
 	}
 	
+	public void AddStatement(Statement statement)
+	{
+		Statements.add(statement);
+	}
+	
+	private void RegisterParameter(SymbolTableVariableDeclarationEntry parameter, SymbolTableVariableDeclarationEntry value)
+	{
+		if (value.UseDouble)
+			symboltable.SetValue(parameter.Name, value.ValueDouble);
+		else
+			symboltable.SetValue(parameter.Name, value.Value);
+	}
+	
+	private void RegisterParameters(ArrayList<SymbolTableVariableDeclarationEntry> values)
+	{
+		for (int i = 0; i < Parameters.size(); i++)
+		{
+			RegisterParameter(Parameters.get(i), values.get(i));
+		}
+	}
+	
 	public Double RunFunction(ArrayList<SymbolTableVariableDeclarationEntry> parameters)
 	{
 		Double outputValue = 0.0;
@@ -70,14 +91,20 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 			
 			return number % modulo;
 		}
-		
+		RegisterParameters(parameters);
 		for (Statement statement : Statements)
 		{
 			statement.Run();
 			
-			if (statement.type == StatementType.Return)
+			if (statement.type.equals(StatementType.Return))
 			{
 				ReturnStatement returnStatement = (ReturnStatement)statement;
+				outputValue = returnStatement.GetValue();
+				return outputValue;
+			}
+			else if (statement.returnTriggered)
+			{
+				ReturnStatement returnStatement = (ReturnStatement)statement.returnStatement;
 				outputValue = returnStatement.GetValue();
 				return outputValue;
 			}

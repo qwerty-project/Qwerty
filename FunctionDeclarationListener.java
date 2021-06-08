@@ -22,9 +22,18 @@ public class FunctionDeclarationListener extends QwertyBaseListener
 		String functionName = ctx.VARNAME().getText();
 		String returnType = ctx.type().getText();
 		
+		StatementVisitor statement_visitor =  new StatementVisitor();
+		statement_visitor.SetSymbolTable(symbolTable);
+		
+		statement_visitor.visit(ctx.function_block());
+		
+		Statement statement = statement_visitor.GetOutput();
+		
+		SymbolTableFunctionDeclarationEntry newFunction = new SymbolTableFunctionDeclarationEntry(returnType, functionName, parameters);
+		newFunction.AddStatement(statement);
 		try
 		{
-			symbolTable.AddEntry(new SymbolTableFunctionDeclarationEntry(returnType, functionName, parameters));
+			symbolTable.AddEntry(newFunction);
 		}
 		catch (SymbolTable.VariableAlreadyExistsException ex)
 		{

@@ -92,7 +92,7 @@ system_function : PRINT ;
 
 custom_function : VARNAME ;
 
-return_stmt : RETURN expr COLON ;
+return_stmt : RETURN value_expression COLON ;
 
 type : system_type
 	 | custom_type

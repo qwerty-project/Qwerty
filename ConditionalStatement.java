@@ -29,6 +29,7 @@ public class ConditionalStatement extends Statement
 		if (If != null && If.check())
 		{
 			If.Run();
+			CheckReturn(If);
 			return;
 		}
 		
@@ -37,6 +38,7 @@ public class ConditionalStatement extends Statement
 			if (Elif.check())
 			{
 				Elif.Run();
+				CheckReturn(Elif);
 				return;
 			}
 		}
@@ -44,6 +46,7 @@ public class ConditionalStatement extends Statement
 		if (Else != null)
 		{
 			Else.Run();
+			CheckReturn(Else);
 		}
 	}
 	

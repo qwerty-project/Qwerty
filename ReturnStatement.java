@@ -15,11 +15,22 @@ public class ReturnStatement extends Statement
 	@Override
 	public void Run()
 	{
-		
+		value_ = symbolTable.GetValueOfExpression(valueExpression);
 	}
 	
 	public Double GetValue()
 	{
 		return value_;
+	}
+	
+	@Override
+	public void Print(int indent)
+	{
+		for (int i = 0; i < indent; i++)
+		{
+			System.out.print("\t");
+		}
+		
+		System.out.println("Return: " + valueExpression.getText());
 	}
 }

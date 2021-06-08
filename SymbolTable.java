@@ -146,4 +146,36 @@ public class SymbolTable
 
 		return listener.GetResult();
 	}
+	
+	public void SetValue(String varname, QwertyParser.Value_expressionContext valueExpression)
+	{
+		if (!DoesVariableExist(varname))
+		{
+			try
+			{
+				AddEntry(new SymbolTableVariableDeclarationEntry("Int", varname));
+			} 
+			catch (VariableAlreadyExistsException ex)
+			{
+			}
+		}
+		
+		GetVariable(varname).SetValue(valueExpression);
+	}
+	
+	public void SetValue(String varname, Double valueExpression)
+	{
+		if (!DoesVariableExist(varname))
+		{
+			try
+			{
+				AddEntry(new SymbolTableVariableDeclarationEntry("Int", varname));
+			} 
+			catch (VariableAlreadyExistsException ex)
+			{
+			}
+		}
+		
+		GetVariable(varname).SetValue(valueExpression);
+	}
 }

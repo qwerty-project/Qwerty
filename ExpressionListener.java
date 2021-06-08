@@ -43,10 +43,17 @@ public class ExpressionListener extends QwertyBaseListener
     {
         String varname = ctx.VARNAME().getText();
 		
-		Double variableValue = symboltable.GetVariable(varname).GetValue();
+		if (symboltable.GetVariable(varname) == null)
+		{
+			AddToStack(0.0);
+		}
+		else
+		{
+			Double variableValue = symboltable.GetVariable(varname).GetValue();
 		
-		AddToStack(variableValue);
-    }
+			AddToStack(variableValue);
+		}
+	}
 
     @Override
     public void exitAddSubtractExpression(QwertyParser.AddSubtractExpressionContext ctx)

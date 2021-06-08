@@ -5,6 +5,9 @@ public class Statement
 	protected SymbolTable symbolTable;
 	protected ArrayList<Statement> Statements;
 	public StatementType type;
+	
+	public boolean returnTriggered = false;
+	public Statement returnStatement = null;
 
 	public Statement(SymbolTable symbolTable_, StatementType type_, ArrayList<Statement> statements_)
 	{
@@ -50,6 +53,10 @@ public class Statement
 		for (Statement statement : Statements)
 		{
 			statement.Run();
+			if (CheckReturn(statement))
+			{
+				return;
+			}
 		}
 	}
 	
@@ -71,5 +78,23 @@ public class Statement
 		{
 			statement.Print(indent + 1);
 		}
+	}
+	
+	public boolean CheckReturn(Statement statement)
+	{
+		if (statement.type.equals(StatementType.Return))
+		{
+			returnTriggered = true;
+			returnStatement = statement;
+			return true;
+		}
+		else if (statement.returnTriggered)
+		{
+			returnTriggered = true;
+			returnStatement = statement.returnStatement;
+			return true;
+		}
+		
+		return false;
 	}
 }

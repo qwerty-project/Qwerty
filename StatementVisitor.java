@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public class StatementVisitor extends QwertyBaseVisitor<Double>
 {
-    private ArrayList<ArrayList<Statement>> currentStatements = null;
+    private ArrayList<ArrayList<Statement>> currentStatements = new ArrayList<ArrayList<Statement>>();
 
     IFConditionalStatement currentIfStatement = null;
-    ArrayList<ELIFConditionalStatement> currentElifStatements = null;
+    ArrayList<ELIFConditionalStatement> currentElifStatements = new ArrayList<ELIFConditionalStatement>();
     ELSEConditionalStatement currentElseStatement = null;
 
     private SymbolTable symboltable;
@@ -15,11 +15,22 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 	{
 		symboltable = symboltable_;
 	}
+	
+	private void AddToScope(Statement statement)
+	{
+		if (currentStatements.size() <= 0)
+		{
+			currentStatements.add(new ArrayList<Statement>());
+		}
+		
+		currentStatements.get(currentStatements.size() - 1).add(statement);
+	}
 
     public Statement GetOutput()
     {
         Statement output = new Statement(symboltable);
-        output.AddStatements(currentStatements.get(currentStatements.size() - 1));
+		if (currentStatements.size() > 0)
+			output.AddStatements(currentStatements.get(currentStatements.size() - 1));
 
         return output;
     }
@@ -35,7 +46,7 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 
         return 0.0;
     }
-
+	
     @Override
     public Double visitStmt(QwertyParser.StmtContext ctx)
     {
@@ -51,6 +62,15 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 
         return 0.0;
     }
+	
+	@Override
+	public Double visitReturn_stmt(QwertyParser.Return_stmtContext ctx)
+	{
+		System.out.println("Ewa return!");
+		AddToScope(new ReturnStatement(symboltable, ctx.value_expression()));
+		
+		return 0.0;
+	}
 	
 	@Override 
 	public Double visitFor_statement(QwertyParser.For_statementContext ctx)
@@ -105,7 +125,7 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 
         conditional.AddElseStatement(currentElseStatement);
 
-        currentStatements.get(currentStatements.size() - 1).add(conditional);
+        AddToScope(conditional);
 
         currentIfStatement = null;
         currentElifStatements = new ArrayList<ELIFConditionalStatement>();
@@ -171,7 +191,7 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
     {
         System.out.println("Function called: " + ctx.function_name().getText());
 
-        currentStatements.get(currentStatements.size() - 1).add(new FunctionCallStatement(symboltable, ctx));
+		AddToScope(new FunctionCallStatement(symboltable, ctx));
 
         return 0.0;
     }

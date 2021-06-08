@@ -4,7 +4,7 @@ import org.antlr.v4.runtime.tree.*;
 
 public class SymbolTableVariableDeclarationEntry extends SymbolTableEntry
 {
-	boolean UseDouble = false;
+	public boolean UseDouble = false;
 	public Double ValueDouble;
     public QwertyParser.Value_expressionContext Value = null;
 	
@@ -20,6 +20,14 @@ public class SymbolTableVariableDeclarationEntry extends SymbolTableEntry
 		super(type, name, VariableType.Variable);
         
 		Value = value;
+	}
+	
+	public SymbolTableVariableDeclarationEntry(String type, String name, Double value, boolean a)
+	{
+		super(type, name, VariableType.Variable);
+        
+		UseDouble = true;
+		ValueDouble = value;
 	}
 	
 	@Override
@@ -51,5 +59,10 @@ public class SymbolTableVariableDeclarationEntry extends SymbolTableEntry
 	{
 		UseDouble = true;
 		ValueDouble = value;
+	}
+	
+	public void SetValue(QwertyParser.Value_expressionContext value)
+	{
+		Value = value;
 	}
 }

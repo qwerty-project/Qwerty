@@ -1446,8 +1446,8 @@ public class QwertyParser extends Parser {
 
 	public static class Return_stmtContext extends ParserRuleContext {
 		public TerminalNode RETURN() { return getToken(QwertyParser.RETURN, 0); }
-		public ExprContext expr() {
-			return getRuleContext(ExprContext.class,0);
+		public Value_expressionContext value_expression() {
+			return getRuleContext(Value_expressionContext.class,0);
 		}
 		public TerminalNode COLON() { return getToken(QwertyParser.COLON, 0); }
 		public Return_stmtContext(ParserRuleContext parent, int invokingState) {
@@ -1478,7 +1478,7 @@ public class QwertyParser extends Parser {
 			setState(180);
 			match(RETURN);
 			setState(181);
-			expr(0);
+			value_expression();
 			setState(182);
 			match(COLON);
 			}
@@ -2634,7 +2634,7 @@ public class QwertyParser extends Parser {
 		"\2\u00ac\u00ad\7#\2\2\u00ad#\3\2\2\2\u00ae\u00b1\5&\24\2\u00af\u00b1\5"+
 		"(\25\2\u00b0\u00ae\3\2\2\2\u00b0\u00af\3\2\2\2\u00b1%\3\2\2\2\u00b2\u00b3"+
 		"\7\3\2\2\u00b3\'\3\2\2\2\u00b4\u00b5\7*\2\2\u00b5)\3\2\2\2\u00b6\u00b7"+
-		"\7!\2\2\u00b7\u00b8\5\64\33\2\u00b8\u00b9\7&\2\2\u00b9+\3\2\2\2\u00ba"+
+		"\7!\2\2\u00b7\u00b8\5\62\32\2\u00b8\u00b9\7&\2\2\u00b9+\3\2\2\2\u00ba"+
 		"\u00bd\5.\30\2\u00bb\u00bd\5\60\31\2\u00bc\u00ba\3\2\2\2\u00bc\u00bb\3"+
 		"\2\2\2\u00bd-\3\2\2\2\u00be\u00bf\t\2\2\2\u00bf/\3\2\2\2\u00c0\u00c1\7"+
 		"*\2\2\u00c1\61\3\2\2\2\u00c2\u00c3\5\64\33\2\u00c3\63\3\2\2\2\u00c4\u00c5"+

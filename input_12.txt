@@ -1,0 +1,7 @@
+Factorial(Int turn) : Int
+{
+	Print(turn) :
+	Return turn * Factorial(turn -  1) :
+}
+
+Factorial(3, 3) :
