@@ -1,0 +1,37 @@
+GCD_R(Int r) : Int { Return r : }
+GCD_A(Int a) : Int { Return a : }
+GCD_B(Int b) : Int { Return b : }
+
+GCD(Int gcd_a, Int gcd_b) : Int
+{
+    GCD_A(gcd_a) :
+    GCD_B(gcd_b) :
+    GCD_R(0) :
+    For : Mod(GCD_A, GCD_B) > 0 :
+    {
+        GCD_R(Mod(GCD_A, GCD_B)) :
+        GCD_A(GCD_B) :
+        GCD_B(GCD_R) :
+    }
+    
+    Return GCD_B :
+}
+
+Int ITERATE = 10 :
+
+I_COUNTER(Int i_counter) : Int { Return i_counter : }
+For : I_COUNTER < ITERATE :
+{
+    J_COUNTER(Int j_counter) : Int { Return j_counter : }
+    J_COUNTER(0) :
+    For : J_COUNTER < ITERATE :
+    {
+        GCD(I_COUNTER, J_COUNTER) :
+
+        Print(GCD_B, I_COUNTER, J_COUNTER) :
+        J_COUNTER(J_COUNTER + 1) :
+    }
+    Print() :
+    
+    I_COUNTER(I_COUNTER + 1) :
+}

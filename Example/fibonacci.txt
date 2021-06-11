@@ -1,0 +1,19 @@
+Fibonacci_A(Int fibonacci_return) : Int { Return fibonacci_return : }
+Fibonacci_B(Int fibonacci_b) : Int { Return fibonacci_b : }
+Fibonacci_TMP(Int fibonacci_TMP) : Int { Return fibonacci_TMP : }
+    
+Fibonacci(Int turn) : Int
+{
+	Fibonacci_A(0) :
+    Fibonacci_B(1) :
+    
+	For : i < turn :
+	{
+        Fibonacci_TMP(Fibonacci_A()) :
+        Fibonacci_A(Fibonacci_B()) :
+        Fibonacci_B(Fibonacci_TMP() + Fibonacci_B()) : 
+	}
+}
+
+Fibonacci(10) :
+Print(fibonacci_return) :

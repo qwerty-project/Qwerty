@@ -1,0 +1,20 @@
+Give1_If_positive_otherwise_0(Int number) : Int
+{
+	If : number > 0 : 
+	{
+		Return 1 :
+	}
+	Else
+	{
+		Return 0 :
+	}
+
+	Return -1 :
+}
+
+Int result_11 = Give1_If_positive_otherwise_0(11) :
+
+Int result_neg_12 = Give1_If_positive_otherwise_0(-12) :
+
+Print(result_11)     :
+Print(result_neg_12) :

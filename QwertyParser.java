@@ -2276,80 +2276,80 @@ public class QwertyParser extends Parser {
 				break;
 			case 4:
 				{
-				_localctx = new NotExpressionContext(_localctx);
+				_localctx = new FunctioncallExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(210);
-				((NotExpressionContext)_localctx).operator = match(FACTORIAL);
-				setState(211);
-				expr(19);
+				function_call();
 				}
 				break;
 			case 5:
 				{
-				_localctx = new ParanthesesExpressionContext(_localctx);
+				_localctx = new NotExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
+				setState(211);
+				((NotExpressionContext)_localctx).operator = match(FACTORIAL);
 				setState(212);
-				match(LEFT_PARANTHESES);
-				setState(213);
-				expr(0);
-				setState(214);
-				match(RIGHT_PARANTHESES);
+				expr(18);
 				}
 				break;
 			case 6:
 				{
-				_localctx = new NumberExpressionContext(_localctx);
+				_localctx = new ParanthesesExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(216);
-				match(NUMBER);
+				setState(213);
+				match(LEFT_PARANTHESES);
+				setState(214);
+				expr(0);
+				setState(215);
+				match(RIGHT_PARANTHESES);
 				}
 				break;
 			case 7:
 				{
-				_localctx = new DecimalExpressionContext(_localctx);
+				_localctx = new NumberExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(217);
-				match(DECIMAL);
+				match(NUMBER);
 				}
 				break;
 			case 8:
 				{
-				_localctx = new TrueExpressionContext(_localctx);
+				_localctx = new DecimalExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(218);
-				match(TRUE);
+				match(DECIMAL);
 				}
 				break;
 			case 9:
 				{
-				_localctx = new FalseExpressionContext(_localctx);
+				_localctx = new TrueExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(219);
-				match(FALSE);
+				match(TRUE);
 				}
 				break;
 			case 10:
 				{
-				_localctx = new VarnameExpressionContext(_localctx);
+				_localctx = new FalseExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(220);
-				match(VARNAME);
+				match(FALSE);
 				}
 				break;
 			case 11:
 				{
-				_localctx = new FunctioncallExpressionContext(_localctx);
+				_localctx = new VarnameExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(221);
-				function_call();
+				match(VARNAME);
 				}
 				break;
 			case 12:
@@ -2379,11 +2379,11 @@ public class QwertyParser extends Parser {
 						_localctx = new PowerExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(225);
-						if (!(precpred(_ctx, 18))) throw new FailedPredicateException(this, "precpred(_ctx, 18)");
+						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
 						setState(226);
 						((PowerExpressionContext)_localctx).operator = match(POWER);
 						setState(227);
-						expr(19);
+						expr(18);
 						}
 						break;
 					case 2:
@@ -2391,7 +2391,7 @@ public class QwertyParser extends Parser {
 						_localctx = new MultiplyDivideExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(228);
-						if (!(precpred(_ctx, 17))) throw new FailedPredicateException(this, "precpred(_ctx, 17)");
+						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
 						setState(229);
 						((MultiplyDivideExpressionContext)_localctx).operator = _input.LT(1);
 						_la = _input.LA(1);
@@ -2404,7 +2404,7 @@ public class QwertyParser extends Parser {
 							consume();
 						}
 						setState(230);
-						expr(18);
+						expr(17);
 						}
 						break;
 					case 3:
@@ -2412,7 +2412,7 @@ public class QwertyParser extends Parser {
 						_localctx = new AddSubtractExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(231);
-						if (!(precpred(_ctx, 16))) throw new FailedPredicateException(this, "precpred(_ctx, 16)");
+						if (!(precpred(_ctx, 15))) throw new FailedPredicateException(this, "precpred(_ctx, 15)");
 						setState(232);
 						((AddSubtractExpressionContext)_localctx).operator = _input.LT(1);
 						_la = _input.LA(1);
@@ -2425,7 +2425,7 @@ public class QwertyParser extends Parser {
 							consume();
 						}
 						setState(233);
-						expr(17);
+						expr(16);
 						}
 						break;
 					case 4:
@@ -2433,11 +2433,11 @@ public class QwertyParser extends Parser {
 						_localctx = new EqualEqualExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(234);
-						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
+						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
 						setState(235);
 						((EqualEqualExpressionContext)_localctx).operator = match(EQ_EQ);
 						setState(236);
-						expr(15);
+						expr(14);
 						}
 						break;
 					case 5:
@@ -2445,11 +2445,11 @@ public class QwertyParser extends Parser {
 						_localctx = new AndExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(237);
-						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
+						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
 						setState(238);
 						((AndExpressionContext)_localctx).operator = match(AND);
 						setState(239);
-						expr(14);
+						expr(13);
 						}
 						break;
 					case 6:
@@ -2457,11 +2457,11 @@ public class QwertyParser extends Parser {
 						_localctx = new OrExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(240);
-						if (!(precpred(_ctx, 12))) throw new FailedPredicateException(this, "precpred(_ctx, 12)");
+						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
 						setState(241);
 						((OrExpressionContext)_localctx).operator = match(OR);
 						setState(242);
-						expr(13);
+						expr(12);
 						}
 						break;
 					case 7:
@@ -2469,11 +2469,11 @@ public class QwertyParser extends Parser {
 						_localctx = new LessthanExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(243);
-						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
+						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
 						setState(244);
 						((LessthanExpressionContext)_localctx).operator = match(LESS_THAN);
 						setState(245);
-						expr(12);
+						expr(11);
 						}
 						break;
 					case 8:
@@ -2481,11 +2481,11 @@ public class QwertyParser extends Parser {
 						_localctx = new GreaterthanExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(246);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
 						setState(247);
 						((GreaterthanExpressionContext)_localctx).operator = match(GREATER_THAN);
 						setState(248);
-						expr(11);
+						expr(10);
 						}
 						break;
 					case 9:
@@ -2493,11 +2493,11 @@ public class QwertyParser extends Parser {
 						_localctx = new LessthanorequalExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(249);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
 						setState(250);
 						((LessthanorequalExpressionContext)_localctx).operator = match(LESS_THAN_OR_EQ);
 						setState(251);
-						expr(10);
+						expr(9);
 						}
 						break;
 					case 10:
@@ -2505,11 +2505,11 @@ public class QwertyParser extends Parser {
 						_localctx = new GreaterthanorequalExpressionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(252);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
 						setState(253);
 						((GreaterthanorequalExpressionContext)_localctx).operator = match(GREATER_THAN_OR_EQ);
 						setState(254);
-						expr(9);
+						expr(8);
 						}
 						break;
 					case 11:
@@ -2517,7 +2517,7 @@ public class QwertyParser extends Parser {
 						_localctx = new FactorialExpresionContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(255);
-						if (!(precpred(_ctx, 20))) throw new FailedPredicateException(this, "precpred(_ctx, 20)");
+						if (!(precpred(_ctx, 19))) throw new FailedPredicateException(this, "precpred(_ctx, 19)");
 						setState(256);
 						((FactorialExpresionContext)_localctx).operator = match(FACTORIAL);
 						}
@@ -2552,27 +2552,27 @@ public class QwertyParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 18);
-		case 1:
 			return precpred(_ctx, 17);
-		case 2:
+		case 1:
 			return precpred(_ctx, 16);
+		case 2:
+			return precpred(_ctx, 15);
 		case 3:
-			return precpred(_ctx, 14);
-		case 4:
 			return precpred(_ctx, 13);
-		case 5:
+		case 4:
 			return precpred(_ctx, 12);
-		case 6:
+		case 5:
 			return precpred(_ctx, 11);
-		case 7:
+		case 6:
 			return precpred(_ctx, 10);
-		case 8:
+		case 7:
 			return precpred(_ctx, 9);
-		case 9:
+		case 8:
 			return precpred(_ctx, 8);
+		case 9:
+			return precpred(_ctx, 7);
 		case 10:
-			return precpred(_ctx, 20);
+			return precpred(_ctx, 19);
 		}
 		return true;
 	}
@@ -2642,25 +2642,25 @@ public class QwertyParser extends Parser {
 		"\2\u00c8\u00c9\7#\2\2\u00c9\u00e2\3\2\2\2\u00ca\u00cb\7\r\2\2\u00cb\u00cc"+
 		"\7\"\2\2\u00cc\u00cd\5\64\33\2\u00cd\u00ce\7#\2\2\u00ce\u00e2\3\2\2\2"+
 		"\u00cf\u00d0\7\13\2\2\u00d0\u00d1\7\"\2\2\u00d1\u00d2\5\64\33\2\u00d2"+
-		"\u00d3\7#\2\2\u00d3\u00e2\3\2\2\2\u00d4\u00d5\7 \2\2\u00d5\u00e2\5\64"+
-		"\33\25\u00d6\u00d7\7\"\2\2\u00d7\u00d8\5\64\33\2\u00d8\u00d9\7#\2\2\u00d9"+
-		"\u00e2\3\2\2\2\u00da\u00e2\7+\2\2\u00db\u00e2\7,\2\2\u00dc\u00e2\7(\2"+
-		"\2\u00dd\u00e2\7)\2\2\u00de\u00e2\7*\2\2\u00df\u00e2\5\"\22\2\u00e0\u00e2"+
-		"\7-\2\2\u00e1\u00c4\3\2\2\2\u00e1\u00ca\3\2\2\2\u00e1\u00cf\3\2\2\2\u00e1"+
-		"\u00d4\3\2\2\2\u00e1\u00d6\3\2\2\2\u00e1\u00da\3\2\2\2\u00e1\u00db\3\2"+
-		"\2\2\u00e1\u00dc\3\2\2\2\u00e1\u00dd\3\2\2\2\u00e1\u00de\3\2\2\2\u00e1"+
-		"\u00df\3\2\2\2\u00e1\u00e0\3\2\2\2\u00e2\u0105\3\2\2\2\u00e3\u00e4\f\24"+
-		"\2\2\u00e4\u00e5\7\37\2\2\u00e5\u0104\5\64\33\25\u00e6\u00e7\f\23\2\2"+
-		"\u00e7\u00e8\t\3\2\2\u00e8\u0104\5\64\33\24\u00e9\u00ea\f\22\2\2\u00ea"+
-		"\u00eb\t\4\2\2\u00eb\u0104\5\64\33\23\u00ec\u00ed\f\20\2\2\u00ed\u00ee"+
-		"\7\24\2\2\u00ee\u0104\5\64\33\21\u00ef\u00f0\f\17\2\2\u00f0\u00f1\7\25"+
-		"\2\2\u00f1\u0104\5\64\33\20\u00f2\u00f3\f\16\2\2\u00f3\u00f4\7\26\2\2"+
-		"\u00f4\u0104\5\64\33\17\u00f5\u00f6\f\r\2\2\u00f6\u00f7\7\27\2\2\u00f7"+
-		"\u0104\5\64\33\16\u00f8\u00f9\f\f\2\2\u00f9\u00fa\7\30\2\2\u00fa\u0104"+
-		"\5\64\33\r\u00fb\u00fc\f\13\2\2\u00fc\u00fd\7\31\2\2\u00fd\u0104\5\64"+
-		"\33\f\u00fe\u00ff\f\n\2\2\u00ff\u0100\7\32\2\2\u0100\u0104\5\64\33\13"+
-		"\u0101\u0102\f\26\2\2\u0102\u0104\7 \2\2\u0103\u00e3\3\2\2\2\u0103\u00e6"+
-		"\3\2\2\2\u0103\u00e9\3\2\2\2\u0103\u00ec\3\2\2\2\u0103\u00ef\3\2\2\2\u0103"+
+		"\u00d3\7#\2\2\u00d3\u00e2\3\2\2\2\u00d4\u00e2\5\"\22\2\u00d5\u00d6\7 "+
+		"\2\2\u00d6\u00e2\5\64\33\24\u00d7\u00d8\7\"\2\2\u00d8\u00d9\5\64\33\2"+
+		"\u00d9\u00da\7#\2\2\u00da\u00e2\3\2\2\2\u00db\u00e2\7+\2\2\u00dc\u00e2"+
+		"\7,\2\2\u00dd\u00e2\7(\2\2\u00de\u00e2\7)\2\2\u00df\u00e2\7*\2\2\u00e0"+
+		"\u00e2\7-\2\2\u00e1\u00c4\3\2\2\2\u00e1\u00ca\3\2\2\2\u00e1\u00cf\3\2"+
+		"\2\2\u00e1\u00d4\3\2\2\2\u00e1\u00d5\3\2\2\2\u00e1\u00d7\3\2\2\2\u00e1"+
+		"\u00db\3\2\2\2\u00e1\u00dc\3\2\2\2\u00e1\u00dd\3\2\2\2\u00e1\u00de\3\2"+
+		"\2\2\u00e1\u00df\3\2\2\2\u00e1\u00e0\3\2\2\2\u00e2\u0105\3\2\2\2\u00e3"+
+		"\u00e4\f\23\2\2\u00e4\u00e5\7\37\2\2\u00e5\u0104\5\64\33\24\u00e6\u00e7"+
+		"\f\22\2\2\u00e7\u00e8\t\3\2\2\u00e8\u0104\5\64\33\23\u00e9\u00ea\f\21"+
+		"\2\2\u00ea\u00eb\t\4\2\2\u00eb\u0104\5\64\33\22\u00ec\u00ed\f\17\2\2\u00ed"+
+		"\u00ee\7\24\2\2\u00ee\u0104\5\64\33\20\u00ef\u00f0\f\16\2\2\u00f0\u00f1"+
+		"\7\25\2\2\u00f1\u0104\5\64\33\17\u00f2\u00f3\f\r\2\2\u00f3\u00f4\7\26"+
+		"\2\2\u00f4\u0104\5\64\33\16\u00f5\u00f6\f\f\2\2\u00f6\u00f7\7\27\2\2\u00f7"+
+		"\u0104\5\64\33\r\u00f8\u00f9\f\13\2\2\u00f9\u00fa\7\30\2\2\u00fa\u0104"+
+		"\5\64\33\f\u00fb\u00fc\f\n\2\2\u00fc\u00fd\7\31\2\2\u00fd\u0104\5\64\33"+
+		"\13\u00fe\u00ff\f\t\2\2\u00ff\u0100\7\32\2\2\u0100\u0104\5\64\33\n\u0101"+
+		"\u0102\f\25\2\2\u0102\u0104\7 \2\2\u0103\u00e3\3\2\2\2\u0103\u00e6\3\2"+
+		"\2\2\u0103\u00e9\3\2\2\2\u0103\u00ec\3\2\2\2\u0103\u00ef\3\2\2\2\u0103"+
 		"\u00f2\3\2\2\2\u0103\u00f5\3\2\2\2\u0103\u00f8\3\2\2\2\u0103\u00fb\3\2"+
 		"\2\2\u0103\u00fe\3\2\2\2\u0103\u0101\3\2\2\2\u0104\u0107\3\2\2\2\u0105"+
 		"\u0103\3\2\2\2\u0105\u0106\3\2\2\2\u0106\65\3\2\2\2\u0107\u0105\3\2\2"+

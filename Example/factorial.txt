@@ -1,0 +1,17 @@
+Factorial_Temporary(Int factorial_return) : Int { Return factorial_return : }
+
+Factorial(Int turn) : Int
+{
+	Factorial_Temporary(1) :
+
+	For : i < turn :
+	{
+		Int result = factorial_return * (turn - i) :
+		Factorial_Temporary(result) :
+	}
+
+	Return Factorial_Temporary() :
+}
+
+Factorial(5) :
+Print(Factorial_Temporary()) :

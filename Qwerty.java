@@ -25,17 +25,17 @@ public class Qwerty
 		SymbolTable symboltable = new SymbolTable();
 		symboltable.AddSystemFunctions();
 
-		VariableDeclarationListener variableDeclarationListener = new VariableDeclarationListener();
 		FunctionDeclarationListener functionDeclarationListener = new FunctionDeclarationListener();
+		VariableDeclarationListener variableDeclarationListener = new VariableDeclarationListener();
 		//PrintListener printListener = new PrintListener();
         StatementVisitor statementVisitor = new StatementVisitor();
 
-		variableDeclarationListener.SetSymbolTable(symboltable);
         functionDeclarationListener.SetSymbolTable(symboltable);
+		variableDeclarationListener.SetSymbolTable(symboltable);
 		statementVisitor.SetSymbolTable(symboltable);
 		//printListener.SetSymbolTable(symboltable);
-        parser.addParseListener((ParseTreeListener) variableDeclarationListener);
         parser.addParseListener((ParseTreeListener) functionDeclarationListener);
+        parser.addParseListener((ParseTreeListener) variableDeclarationListener);
 		//parser.addParseListener((ParseTreeListener) printListener);
 
         ParseTree tree = parser.program();

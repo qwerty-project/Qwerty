@@ -1,0 +1,26 @@
+Fibonacci_A(Int fibonacci_return) : Int { Return fibonacci_return : }
+Fibonacci_B(Int fibonacci_b) : Int { Return fibonacci_b : }
+Fibonacci_TMP(Int fibonacci_TMP) : Int { Return fibonacci_TMP : }
+    
+Fibonacci(Int turn) : Int
+{
+	Fibonacci_A(0) :
+    Fibonacci_B(1) :
+    
+	For : i < turn :
+	{
+        Fibonacci_TMP(Fibonacci_A) :
+        Fibonacci_A(Fibonacci_B) :
+        Fibonacci_B(Fibonacci_TMP + Fibonacci_B) : 
+	}
+}
+
+For : I_Counter < 50 :
+{
+    Fibonacci(I_Counter) :
+    
+    Print(fibonacci_return) :
+    
+    I_Counter(Int i_counter) : Int { Return i_counter : }
+    I_Counter(I_Counter + 1) :
+}

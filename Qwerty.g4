@@ -114,6 +114,7 @@ value_expression: expr;
 expr : COS LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# cosExpression
 	 | TAN LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# tanExpression
 	 | SIN LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# sinExpression
+	 | function_call                                # functioncallExpression
 	 | expr operator=FACTORIAL                  	# factorialExpresion
      | operator=FACTORIAL expr                   	# notExpression
 	 | expr operator=POWER expr                 	# powerExpression
@@ -132,7 +133,6 @@ expr : COS LEFT_PARANTHESES expr RIGHT_PARANTHESES 	# cosExpression
 	 | TRUE                                         # trueExpression
 	 | FALSE                                        # falseExpression
 	 | VARNAME										# varnameExpression
-	 | function_call                                # functioncallExpression
 	 | STRING                                       # stringExpression
 	 ;
 

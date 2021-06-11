@@ -83,7 +83,7 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 
         currentStatements.remove(currentStatements.size() - 1);
 		
-		currentStatements.get(currentStatements.size() - 1).add(forStatement);
+		AddToScope(forStatement);
 		
 		return 0.0;
 	}

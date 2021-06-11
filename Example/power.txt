@@ -1,0 +1,14 @@
+Power_TMP(Int power_return) : Int { Return power_return : }
+
+Power(Int base, Int power) : Int
+{
+    Power_TMP(1) :
+   
+    For : i < power :
+    {
+        Power_TMP(Power_TMP() * base) :
+    }
+}
+
+Power(4, 3) :
+Print(power_return) :

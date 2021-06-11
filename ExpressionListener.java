@@ -20,7 +20,7 @@ public class ExpressionListener extends QwertyBaseListener
 	{
 		String functionname = ctx.function_call().function_name().getText();
 		ArrayList<SymbolTableVariableDeclarationEntry> arguments = new ArrayList<SymbolTableVariableDeclarationEntry>();
-		
+
 		for (QwertyParser.Function_argumentContext argument : ctx.function_call().function_arguments().function_argument())
 		{
 			SymbolTableVariableDeclarationEntry arg = new SymbolTableVariableDeclarationEntry("Int", "temp", argument.value_expression());
@@ -45,7 +45,14 @@ public class ExpressionListener extends QwertyBaseListener
 		
 		if (symboltable.GetVariable(varname) == null)
 		{
-			AddToStack(0.0);
+			if (symboltable.DoesFunctionExist(varname))
+			{
+				AddToStack(symboltable.GetFunction(varname).RunFunction());
+			}
+			else
+			{
+				AddToStack(0.0);
+			}
 		}
 		else
 		{

@@ -61,15 +61,20 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 		if (value.UseDouble)
 			symboltable.SetValue(parameter.Name, value.ValueDouble);
 		else
-			symboltable.SetValue(parameter.Name, value.Value);
+			symboltable.SetValue(parameter.Name, value.GetValue());
 	}
 	
 	private void RegisterParameters(ArrayList<SymbolTableVariableDeclarationEntry> values)
 	{
-		for (int i = 0; i < Parameters.size(); i++)
+		for (int i = 0; i < Parameters.size() && i < values.size(); i++)
 		{
 			RegisterParameter(Parameters.get(i), values.get(i));
 		}
+	}
+	
+	public Double RunFunction()
+	{
+		return RunFunction(new ArrayList<SymbolTableVariableDeclarationEntry>());
 	}
 	
 	public Double RunFunction(ArrayList<SymbolTableVariableDeclarationEntry> parameters)
@@ -79,8 +84,10 @@ public class SymbolTableFunctionDeclarationEntry extends SymbolTableEntry
 		{
 			for (SymbolTableVariableDeclarationEntry parameter : parameters)
 			{
-				System.out.println("Expression Result: " + parameter.GetValue());
+				System.out.print(parameter.GetValue() + ", ");
 			}
+			
+			System.out.println("");
 			
 			return outputValue;
 		}
