@@ -66,7 +66,6 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
 	@Override
 	public Double visitReturn_stmt(QwertyParser.Return_stmtContext ctx)
 	{
-		System.out.println("Ewa return!");
 		AddToScope(new ReturnStatement(symboltable, ctx.value_expression()));
 		
 		return 0.0;
@@ -189,8 +188,6 @@ public class StatementVisitor extends QwertyBaseVisitor<Double>
     @Override
     public Double visitFunction_call(QwertyParser.Function_callContext ctx)
     {
-        System.out.println("Function called: " + ctx.function_name().getText());
-
 		AddToScope(new FunctionCallStatement(symboltable, ctx));
 
         return 0.0;
